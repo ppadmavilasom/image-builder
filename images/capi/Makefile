@@ -19,7 +19,7 @@ all: build
 
 # A list of the supported distribution/version combinations. Each member
 # of *_BUILD_NAMES must have a corresponding file "config/*_BUILD_NAME.json".
-OVA_BUILD_NAMES ?= ova-centos-7 ova-ubuntu-1804
+OVA_BUILD_NAMES ?= ova-centos-7 ova-ubuntu-1804 ova-photon-3
 AMI_BUILD_NAMES ?= ami-default
 GCE_BUILD_NAMES ?= gce-default
 
@@ -36,7 +36,7 @@ OVA_BUILD_TARGETS := $(addprefix build-,$(OVA_BUILD_NAMES))
 AMI_BUILD_TARGETS := $(addprefix build-,$(AMI_BUILD_NAMES))
 GCE_BUILD_TARGETS := $(addprefix build-,$(GCE_BUILD_NAMES))
 $(OVA_BUILD_TARGETS):
-	packer build $(PACKER_FLAGS) -var-file="$(abspath packer/ova/$(subst build-,,$@).json)" packer/ova/packer.json
+	PACKER_LOG=1 PACKER_LOG_PATH=./happening.log packer build $(PACKER_FLAGS) -var-file="$(abspath packer/ova/$(subst build-,,$@).json)" packer/ova/packer.json
 .PHONY: $(OVA_BUILD_TARGETS)
 
 $(AMI_BUILD_TARGETS):

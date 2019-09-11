@@ -4,7 +4,7 @@
     "build_timestamp": "{{timestamp}}",
     "capi_version": "v1alpha1",
     "existing_ansible_ssh_args": "{{env `ANSIBLE_SSH_ARGS`}}",
-    "headless": "true",
+    "headless": "false",
     "containerd_version": null,
     "containerd_sha256": null,
     "kubernetes_cni_rpm_version": null,
