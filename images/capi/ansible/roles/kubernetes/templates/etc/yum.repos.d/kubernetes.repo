@@ -1,0 +1,6 @@
+[kubernetes]
+name=kubernetes
+description=the kubernetes yum repo
+baseurl={{ kubernetes_rpm_repo }}
+gpgcheck=0
+enabled=1
