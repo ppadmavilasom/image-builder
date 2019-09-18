@@ -36,6 +36,18 @@
     - cloud-utils-growpart
   when: ansible_os_family == "RedHat"
 
+- name: Install cloud-init packages
+  command: tdnf install {{ packages }} -y
+  vars:
+    packages: "cloud-init cloud-utils python3-netifaces"
+  when: ansible_os_family == "VMware Photon OS"
+
+- name: copy cloud-init 18.4 rpm
+  command: curl -LO https://vmware.bintray.com/photon_dev_x86_64/noarch/cloud-init-18.4-1.ph3.noarch.rpm
+
+- name: Update cloud-init 18.4
+  command: rpm -Uvh ./cloud-init-18.4-1.ph3.noarch.rpm
+
 - name: Download cloud-init datasource for VMware Guestinfo
   get_url:
     url:  https://raw.githubusercontent.com/vmware/cloud-init-vmware-guestinfo/master/install.sh

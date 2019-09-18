@@ -28,4 +28,4 @@
     group: photon
 
 - name: install baseline dependencies
-  command: tdnf install {{ common_photon_rpms }} -y
+  command: tdnf install {{ common_photon_rpms }} -y --refresh

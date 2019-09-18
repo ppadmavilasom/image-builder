@@ -16,4 +16,4 @@
   when: packer_builder_type == 'amazon'
 
 - include_tasks: vmware.yml
-  when: packer_builder_type == 'vmware'
+  when: packer_builder_type | search("vmware")

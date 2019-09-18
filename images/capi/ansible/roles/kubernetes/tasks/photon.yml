@@ -17,6 +17,15 @@
     dest: /etc/yum.repos.d/kubernetes.repo
     src: etc/yum.repos.d/kubernetes.repo
 
+- name: copy conntrack-tools rpm
+  command: curl -LO https://vmware.bintray.com/photon_dev_x86_64/x86_64/conntrack-tools-1.4.5-2.ph3.x86_64.rpm
+
+- name: Install conntrack-tools
+  command: tdnf install conntrack-tools -y
+
+- name: Update conntrack-tools
+  command: rpm -Uvh ./conntrack-tools-1.4.5-2.ph3.x86_64.rpm
+
 - name: Install Kubernetes
   command: tdnf install {{ packages }} -y
   vars:

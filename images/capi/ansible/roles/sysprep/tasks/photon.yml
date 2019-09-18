@@ -20,10 +20,14 @@
 - name: set hostname
   command: hostnamectl set-hostname localhost.local
 
-- name: Remove tdnf package caches
-  command: /usr/bin/tdnf -y clean all
-
 - name: Remove the kickstart log
   file:
     state: absent
     path: /root/anaconda-ks.cfg
+
+#- name: update all
+#  command: /usr/bin/tdnf update linux-esx -y
+
+- name: Remove tdnf package caches
+  command: /usr/bin/tdnf -y clean all
+
