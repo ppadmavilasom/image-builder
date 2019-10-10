@@ -42,11 +42,11 @@
     packages: "cloud-init cloud-utils python3-netifaces"
   when: ansible_os_family == "VMware Photon OS"
 
-- name: copy cloud-init 18.4 rpm
-  command: curl -LO https://vmware.bintray.com/photon_dev_x86_64/noarch/cloud-init-18.4-1.ph3.noarch.rpm
+- name: copy cloud-init 19.1-2 rpm
+  command: curl -LO https://vmware.bintray.com/photon_dev_x86_64/noarch/cloud-init-19.1-2.ph3.noarch.rpm
 
 - name: Update cloud-init 18.4
-  command: rpm -Uvh ./cloud-init-18.4-1.ph3.noarch.rpm
+  command: rpm -Uvh ./cloud-init-19.1-2.ph3.noarch.rpm
 
 - name: Download cloud-init datasource for VMware Guestinfo
   get_url:

@@ -36,7 +36,7 @@ OVA_BUILD_TARGETS := $(addprefix build-,$(OVA_BUILD_NAMES))
 AMI_BUILD_TARGETS := $(addprefix build-,$(AMI_BUILD_NAMES))
 GCE_BUILD_TARGETS := $(addprefix build-,$(GCE_BUILD_NAMES))
 $(OVA_BUILD_TARGETS):
-	PACKER_LOG=1 PACKER_LOG_PATH=./happening.log packer build $(PACKER_FLAGS) -var-file="$(abspath packer/ova/$(subst build-,,$@).json)" packer/ova/packer.json
+	packer build $(PACKER_FLAGS) -var-file="$(abspath packer/ova/$(subst build-,,$@).json)" packer/ova/packer.json
 .PHONY: $(OVA_BUILD_TARGETS)
 
 $(AMI_BUILD_TARGETS):
